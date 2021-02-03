@@ -47,7 +47,18 @@ def test1():
 
 # implement this function
 def multiples_of_3_and_5(n):
-    pass
+   x = 0 
+   for i in range(n-1,0,-1):
+        y = int(i/3)
+        z = i/3
+        if((y)==z):
+            x+= i
+        else: 
+            y = int(i/5)
+            z = i/5
+            if((y)==z):
+                x+= i
+   return x
 
 # (3 points)
 def test2():
