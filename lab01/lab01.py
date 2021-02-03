@@ -23,8 +23,8 @@ def captured_output():
 # implement this function
 def is_perfect(n):
     x = 0
-    for i in range(2,n):
-        y = (int)n/i
+    for i in range(n,1,-1):
+        y = int(n/i)
         if(y*i==n):
             x+=y
     if(x==n):
