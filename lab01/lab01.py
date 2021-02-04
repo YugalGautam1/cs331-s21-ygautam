@@ -93,20 +93,20 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-    s = 'abcdefghijklmnop'
+    
     base = ""
 
     tres = ""
 
-    for i in range(len(s)-1,-1,-1):
+    for i in range(len(chars)-1,-1,-1):
         okay = ""
-        base+= s[i]
+        base+= chars[i]
         for j in range(len(base)-2,-1,-1):
             okay+=base[j]
         tres=base+okay 
-        print('.'.join(tres).center((len(s)-1)*4+1,'.'))
+        print('.'.join(tres).center((len(chars)-1)*4+1,'.'))
 
-    for i in range (len(s)-1,0,-1):
+    for i in range (len(chars)-1,0,-1):
         x = int(len(tres)/2)
         upside = ""
         
@@ -114,7 +114,7 @@ def gen_pattern(chars):
             if(j!=x and j!= x+1):
                 upside+=tres[j]
         tres = upside
-        print('.'.join(tres).center((len(s)-1)*4+1,'.'))
+        print('.'.join(tres).center((len(chars)-1)*4+1,'.'))
 
 
 
@@ -200,7 +200,7 @@ def main():
     test1()
     test2()
     test3()
-    #test4()
+    test4()
 
 if __name__ == '__main__':
     main()
