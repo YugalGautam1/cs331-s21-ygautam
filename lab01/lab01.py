@@ -176,7 +176,7 @@ p.o.n.m.l.k.j.i.h.g.f.e.d.c.b.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p
 def main():
     test1()
     test2()
-    #test3()
+    test3()
     #test4()
 
 if __name__ == '__main__':
