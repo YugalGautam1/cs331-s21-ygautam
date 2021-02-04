@@ -93,7 +93,30 @@ def test3():
 
 # implement this function
 def gen_pattern(chars):
-    pass
+    s = 'abcdefghijklmnop'
+    base = ""
+
+    tres = ""
+
+    for i in range(len(s)-1,-1,-1):
+        okay = ""
+        base+= s[i]
+        for j in range(len(base)-2,-1,-1):
+            okay+=base[j]
+        tres=base+okay 
+        print('.'.join(tres).center((len(s)-1)*4+1,'.'))
+
+    for i in range (len(s)-1,0,-1):
+        x = int(len(tres)/2)
+        upside = ""
+        
+        for j in range(0,len(tres)):
+            if(j!=x and j!= x+1):
+                upside+=tres[j]
+        tres = upside
+        print('.'.join(tres).center((len(s)-1)*4+1,'.'))
+
+
 
 def test4():
     tc = unittest.TestCase()
