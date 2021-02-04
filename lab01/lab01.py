@@ -71,7 +71,15 @@ def test2():
 # EXERCISE 3
 #################################################################################
 def integer_right_triangles(p):
-    pass
+    x = 0
+    okay = int(p/2)
+    for i in range(2,p-okay):
+        for j in range(60-i,1,-1):
+            z = (60-i-j)
+            if((j*j)+(z*z)==(i*i)):
+                x+=1
+    x = x/2
+    return (x)
 
 def test3():
     tc = unittest.TestCase()
