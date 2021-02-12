@@ -109,7 +109,24 @@ def test1_2():
 ################################################################################
 # Implement this function
 def gen_passage(ngram_dict, length=100):
-    pass
+  current = ""
+  standby = ""
+  s = ""
+  thing = 0
+  while(len(s.split())<length):
+    if(thing == 0):
+      current = random.choice(sorted(ngram_dict.keys()))
+      s += current + " "
+      thing = 1  
+    standby = random.choice(ngram_dict[current])
+    current = standby[len(standby)-1] 
+    for j in range(0,len(standby)):  
+      if(len(s.split())<length): 
+        s += standby[j] + " "
+    if current not in ngram_dict:
+      thing = 0
+  fin = s[0:len(s)-1]
+  return fin
 
 
 # 50 Points
@@ -134,3 +151,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
