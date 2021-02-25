@@ -201,11 +201,7 @@ class SuffixArray():
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]>searchstr):
           y=z-1
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
-          
-          
-        
-
-
+         return 1      
     def contains(self, searchstr: str):
       if(self.positions(str)!=-1):
         return True
