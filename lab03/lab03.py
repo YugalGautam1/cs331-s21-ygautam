@@ -9,15 +9,22 @@ S = TypeVar('S')
 # EXERCISE 1
 #################################################################################
 def mysort(lst: List[T], compare: Callable[[T, T], int]) -> List[T]:
-    x = lst
-    for i in range(0,len(lst)-1):
-        for j in range(i,len(lst)):
-            if(compare(x[i],x[j])==1):
-                y = x[j]
-                z = x[i]
-                x[i] = y
-                x[j] = z    
-    return x
+  x = lst
+
+  for i in range(0,len(lst)-1):
+    for j in range(i,len(lst)):
+      if(compare(x[i],x[j])==1):
+        y = x[j]
+        z = x[i]
+        x[i] = y
+        x[j] = z
+
+        
+
+  return x
+
+
+    
 
 def mybinsearch(lst: List[T], elem: S, compare: Callable[[T, S], int]) -> int:
   x = 0
@@ -34,7 +41,6 @@ def mybinsearch(lst: List[T], elem: S, compare: Callable[[T, S], int]) -> int:
       return z
     
   return -1
-
 
 class Student():
     """Custom class to test generic sorting and searching."""
@@ -122,23 +128,20 @@ class PrefixSearcher():
       if(len(document)/k != len(document)//k):
          for i in range(0,k):
           self.x.append(document[len(document)-k+1:len(document)])
-      suffixcmp = lambda x,y: 0 if x[-1] == y[-1] else (-1 if x[-1] < y[-1] else 1)
-      self.x = mysort(self.x,suffixcmp)
+      thing = lambda x,y: 0 if x==y else (-1 if x<y else 1)
+      self.x = mysort(self.x,thing)
+      
+      
+      
+        
+
+
     def search(self, q):
       if(len(q)>self.k):
         raise Exception("q too big ")
-      x = 0
-      y = len(self.x)-1
-      
-      while x <= y:
-        z = int((x+y)/2) 
-        if (self.x[z]<q):
-          x = z+1
-        if(self.x[z]>q):
-          y = z-1
-        if(self.x==q):
-          return True
-          
+      thing = lambda x,y: 0 if x==y else (-1 if x<y else 1)
+      if(mybinsearch(self.x,q,thing)!=-1):
+        return True
       return False
 
 # 30 Points
@@ -176,26 +179,37 @@ def test2_2():
 # EXERCISE 3
 #################################################################################
 class SuffixArray():
-
+    document = ""
+    x = []
     def __init__(self, document: str):
-        """
-        Creates a suffix array for document (a string).
-        """
-        pass
+      self.document = document 
+      for i in range(0,len(document)):
+        self.x.append(i)
+        thing = lambda x,y: 0 if self.document[x:]==self.document[y:] else (-1 if self.document[x:]<self.document[y:] else 1)
+      self.x = mysort(self.x,thing)
+    
+      
 
+    def positions(self, searchstr:str):
+      output = []
+      x = 0
+      y = len(self.x)-1
+      while x<=y:
+        z = int((x+y)/2) 
+        if(self.document[self.x[z]:self.x[z]+len(searchstr)]<searchstr):
+          x = z+1
+        if(self.document[self.x[z]:self.x[z]+len(searchstr)]>searchstr):
+          y=z-1
+        if(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
+          
+          
+        
 
-    def positions(self, searchstr: str):
-        """
-        Returns all the positions of searchstr in the documented indexed by the suffix array.
-        """
-        pass
 
     def contains(self, searchstr: str):
-        """
-        Returns true of searchstr is coontained in document.
-        """
-        pass
-
+      if(self.positions(str)!=-1):
+        return True
+      return False
 # 40 Points
 def test3():
     """Test suffix arrays."""
