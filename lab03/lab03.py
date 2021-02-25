@@ -196,16 +196,31 @@ class SuffixArray():
       y = len(self.x)-1
       while x<=y:
         z = int((x+y)/2) 
+        
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]<searchstr):
           x = z+1
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]>searchstr):
           y=z-1
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
-         return 1      
+          output.append(self.x[z])
+          
+          temp = z
+          z = z- 1
+          while(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
+            output.append(self.x[z])
+            z = z - 1
+          while(self.document[self.x[temp]:self.x[temp]+len(searchstr)]==searchstr):
+            output.append(self.x[z])
+            temp = temp + 1
+          print(searchstr)
+          return output
+      return output
+      
     def contains(self, searchstr: str):
-      if(self.positions(str)!=-1):
-        return True
-      return False
+
+      if(self.positions(searchstr)==[]):
+        return False
+      return True
 # 40 Points
 def test3():
     """Test suffix arrays."""
