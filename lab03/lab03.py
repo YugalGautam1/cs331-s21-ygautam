@@ -13,10 +13,10 @@ def mysort(lst: List[T], compare: Callable[[T, T], int]) -> List[T]:
     for i in range(0,len(lst)-1):
         for j in range(i,len(lst)):
             if(compare(x[i],x[j])==1):
-            y = x[j]
-            z = x[i]
-            x[i] = y
-            x[j] = z    
+                y = x[j]
+                z = x[i]
+                x[i] = y
+                x[j] = z    
     return x
 
 def mybinsearch(lst: List[T], elem: S, compare: Callable[[T, S], int]) -> int:
