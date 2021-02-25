@@ -212,6 +212,7 @@ class SuffixArray():
           while(self.document[self.x[temp]:self.x[temp]+len(searchstr)]==searchstr):
             output.append(self.x[z])
             temp = temp + 1
+          print(self.document[self.x[temp]:self.x[temp]+len(searchstr)])
           print(searchstr)
           return output
       return output
