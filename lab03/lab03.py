@@ -113,22 +113,33 @@ def test1_5():
 # EXERCISE 2
 #################################################################################
 class PrefixSearcher():
-
+    x = []
+    k = 0
     def __init__(self, document, k):
-        """
-        Initializes a prefix searcher using a document and a maximum
-        search string length k.
-        """
-        pass
-
+      self.k = k
+      for i in range(0,len(document)-k):
+        self.x.append(document[i:i+k])
+      if(len(document)/k != len(document)//k):
+         for i in range(0,k):
+          self.x.append(document[len(document)-k+1:len(document)])
+      suffixcmp = lambda x,y: 0 if x[-1] == y[-1] else (-1 if x[-1] < y[-1] else 1)
+      self.x = mysort(self.x,suffixcmp)
     def search(self, q):
-        """
-        Return true if the document contains search string q (of
-
-        length up to n). If q is longer than n, then raise an
-        Exception.
-        """
-        pass
+      if(len(q)>self.k):
+        raise Exception("q too big ")
+      x = 0
+      y = len(self.x)-1
+      
+      while x <= y:
+        z = int((x+y)/2) 
+        if (self.x[z]<q):
+          x = z+1
+        if(self.x[z]>q):
+          y = z-1
+        if(self.x==q):
+          return True
+          
+      return False
 
 # 30 Points
 def test2():
