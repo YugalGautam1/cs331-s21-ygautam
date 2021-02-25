@@ -169,7 +169,7 @@ def test2_1():
 def test2_2():
     print("\t-search in Moby Dick")
     tc = unittest.TestCase()
-    md_url = 'https://www.gutenberg.org/files/2701/2701-0.txt'
+    md_url = 'http://www.gutenberg.org/files/2701/2701-0.txt'
     md_text = urllib.request.urlopen(md_url).read().decode()
     p = PrefixSearcher(md_text[0:1000],4)
     tc.assertTrue(p.search("Moby"))
