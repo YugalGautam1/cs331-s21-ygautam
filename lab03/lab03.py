@@ -206,7 +206,7 @@ class SuffixArray():
           output.append(self.x[z])
           
           temp = z
-          print("Thing in X: " +self.document[self.x[temp]:self.x[temp]+len(searchstr)] + " Thing compared to it: " + searchstr)
+          
           z = z- 1
           while(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
             output.append(self.x[z])
