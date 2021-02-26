@@ -169,7 +169,7 @@ def test2_1():
 def test2_2():
     print("\t-search in Moby Dick")
     tc = unittest.TestCase()
-    md_url = 'https://www.gutenberg.org/files/2701/2701-0.txt'
+    md_url = 'http://www.gutenberg.org/files/2701/2701-0.txt'
     md_text = urllib.request.urlopen(md_url).read().decode()
     p = PrefixSearcher(md_text[0:1000],4)
     tc.assertTrue(p.search("Moby"))
@@ -202,9 +202,11 @@ class SuffixArray():
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]>searchstr):
           y=z-1
         if(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
+          
           output.append(self.x[z])
           
           temp = z
+          print("Thing in X: " +self.document[self.x[temp]:self.x[temp]+len(searchstr)] + " Thing compared to it: " + searchstr)
           z = z- 1
           while(self.document[self.x[z]:self.x[z]+len(searchstr)]==searchstr):
             output.append(self.x[z])
@@ -212,7 +214,7 @@ class SuffixArray():
           while(self.document[self.x[temp]:self.x[temp]+len(searchstr)]==searchstr):
             output.append(self.x[z])
             temp = temp + 1
-          print(searchstr)
+          
           return output
       return output
       
@@ -246,7 +248,7 @@ def test3_1():
 def test3_2():
     print("\t-suffixarray on Moby Dick!")
     tc = unittest.TestCase()
-    md_url = 'https://www.gutenberg.org/files/2701/2701-0.txt'
+    md_url = 'http://www.gutenberg.org/files/2701/2701-0.txt'
     md_text = urllib.request.urlopen(md_url).read().decode()
     s = SuffixArray(md_text[0:1000])
     tc.assertTrue(s.contains("Moby Dick"))
